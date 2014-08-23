@@ -36,6 +36,10 @@ class Binarytree:
         return self.root.N
 
 
+    def _get(self, key):
+        pass
+
+
     def get(self, key):
         """Get value based on key."""
         pass
@@ -44,7 +48,8 @@ class Binarytree:
     def _put(self, node, key, val):
         """Add key-value pair. Recursively return each subtree's root."""
         if node is None:
-            return Node()
+            return Node(key, val)
+        # otherwise, go left or right...
 
 
     def put(self, key, val):
