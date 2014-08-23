@@ -10,7 +10,11 @@ distinct keys, the event is called a "collision."
 
 Hashing is a good example of a space-time tradeoff. With infinite space, we
 could avoid all collisions. With infinite time, we could search sequentially.
+
+This hash table relies on linear probing for collision resolution.
 ----------------------------------------------------------------------------"""
+
+import pdb
 
 
 class Hashtable:
@@ -19,13 +23,16 @@ class Hashtable:
     def __init__(self):
         """Initialize empty hashtable."""
         self.a = []
+        self.N = 0   # Number of key-value pairs in the table
+        self.M = 16  # Size of linear probing table; M > N 
 
 
     def _hash(self, val):
-        """Private hash function. For now, delegates to uilt-in hash()."""
+        """Return hash code after ensuring it is positive and within range."""
+        return abs(hash(val)) % self.M
 
 
-    def _resize(self):
+    def _resize(self, lim):
         """Doubles size of internal array."""
         pass
 
@@ -40,5 +47,7 @@ class Hashtable:
         pass
 
 
-if __name__ == 'main':
+if __name__ == '__main__':
+    pdb.set_trace()
     ht = Hashtable()
+    ht.put('foo', 1000)
