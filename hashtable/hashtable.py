@@ -26,8 +26,13 @@ class Hashtable:
 
     def __init__(self):
         """Initialize empty hashtable."""
-        self.N = 0  # Number of key-value pairs in the hash table
+        self.N = 0
         self.a = [[]]
+
+
+    def _size(self):
+        """Return number of key-value pairs in the hash table for testing."""
+        return self.N
         
 
     def _hash(self, val, mod):
