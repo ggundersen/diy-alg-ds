@@ -16,8 +16,8 @@ class Binarytree:
         """Inner class to represent nodes in tree."""
         
         
-        def __init__(self, left=None, right=None):
-            self.root = None
+        def __init__(self, key, val, left=None, right=None):
+            self.key = key
             self.val = val
             self.left = left
             self.right = right
@@ -26,7 +26,7 @@ class Binarytree:
 
     def __init__(self):
         """Initialize empty binary tree."""
-        pass
+        self.root = None
 
 
     def size(self):
@@ -43,7 +43,8 @@ class Binarytree:
 
     def _put(self, node, key, val):
         """Add key-value pair. Recursively return each subtree's root."""
-        pass
+        if node is None:
+            return Node()
 
 
     def put(self, key, val):
