@@ -1,15 +1,22 @@
 #!/usr/bin/env python
 
 """----------------------------------------------------------------------------
-hashtable.py
+hashtable.py implements a simple hash table.
 
 A hash table is a data structure that implements an associative array, mapping
-keys to values. A Hash function efficiently generates indexes from the keys
+keys to values. A hash function efficiently generates indices from the keys
 added to the hash table. When a hash function produces the same index from two
 distinct keys, the event is called a "collision."
 
 Hashing is a good example of a space-time tradeoff. With infinite space, we
-could avoid all collisions. With infinite time, we could search sequentially.
+could use the key as an index in a large array. This is prohibitive since the
+number of possible key
+
+Optimizations:
+- Resize the array. Currently, this is not possible because the hash function's
+  modulus is the length of the array. The hashed index would change whenever
+  the array is resized.
+- Pick a prime modulus.
 ----------------------------------------------------------------------------"""
 
 import pdb
@@ -21,7 +28,7 @@ class Hashtable:
     def __init__(self):
         """Initialize empty hashtable."""
         self.N = 0  # Number of key-value pairs in the hash table
-        self.a = [[]] * 1000
+        self.a = [[]] * 10000  # TODO: Resize the hash table
 
 
     def _hash(self, val):
