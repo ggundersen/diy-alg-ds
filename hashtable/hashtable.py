@@ -16,7 +16,7 @@ collisions, hashing to the same index and sequentially searching.
 Hashtable uses separate chaining with lists to resolve collisions.
 ----------------------------------------------------------------------------"""
 
-
+import pdb
 from collections import namedtuple
 
 
@@ -75,7 +75,7 @@ class Hashtable:
     def put(self, key, val):
         """Check key type and list size and then delegate to private put().
         Return void."""
-        if type(key) is not int or type(key) is not str:
+        if type(key) is not int and type(key) is not str:
             raise TypeError('Keys must be integers or strings.')
         if len(self.a) == self.N:
             self._resize(2 * self.N)
@@ -89,3 +89,8 @@ class Hashtable:
             if pair.key == key:
                 return pair.val
         return None
+
+
+if __name__ == '__main__':
+    ht = Hashtable()
+    ht.put(400, 'foo')
