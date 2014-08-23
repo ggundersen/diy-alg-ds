@@ -12,6 +12,8 @@ Hashing is a good example of a space-time tradeoff. With infinite space, we
 could use each key as an index in a large array. This is prohibitive since the
 number of possible keys is large. With infinite time, we could not worry about
 collisions, hashing to the same index and sequentially searching.
+
+Hashtable uses separate chaining with lists to resolve collisions.
 ----------------------------------------------------------------------------"""
 
 
@@ -71,10 +73,14 @@ class Hashtable:
 
 
     def put(self, key, val):
-        """Check list size and delegate to private put(). Return void."""
-        if len(self.a) == self.N:
-            self._resize(2 * self.N)
-        self._put(self.a, key, val, len(self.a), False)
+        """Check key type and list size and then delegate to private put().
+        Return void."""
+        if type(key) is not int or type(key) is not str:
+            raise TypeError('Keys must be integers or strings.')
+        else:
+            if len(self.a) == self.N:
+                self._resize(2 * self.N)
+            self._put(self.a, key, val, len(self.a), False)
 
 
     def get(self, key):
