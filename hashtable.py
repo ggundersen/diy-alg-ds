@@ -34,14 +34,19 @@ class Hashtable:
 
     def _resize(self, lim):
         """Doubles size of internal array."""
-        pass
+        temp = [None] * lim
+        for i, v in enumerate(self.a):
+            temp[i] = self.a[i]
+        self.a = temp
 
 
     def put(self, key, val):
         """Add val at index hashed from key. Return void."""
         if self.N >= self.M / 2:
             self._resize(2 * self.M)
+        # TODO: Deal with collisions
         self.a[self._hash(key)] = val
+        self.N += 1
 
 
     def get(self, key):
