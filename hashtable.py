@@ -23,7 +23,7 @@ class Hashtable:
     def __init__(self):
         """Initialize empty hashtable."""
         self.N = 0   # Number of key-value pairs in the table
-        self.M = 16  # Size of linear probing table; M > N
+        self.M = 2  # Size of linear probing table; M > N
         self.a = [None] * self.M
 
 
@@ -57,4 +57,7 @@ class Hashtable:
 if __name__ == '__main__':
     ht = Hashtable()
     ht.put('foo', 1000)
+    ht.put('bar', 2000)
+    ht.put('baz', 3000)
+    ht.put('qux', 4000)
     print(ht.get('foo'))
