@@ -19,14 +19,14 @@ class TestHashtable(unittest.TestCase):
         self.assertEqual(self.ht._size(), 1)
 
 
-    def test_put_multiple_types(self):
+    def test_put_with_str_and_int(self):
         self.ht.put('foo', 100)
         self.ht.put(5, 'bar')
         self.assertEqual(self.ht.get('foo'), 100)
         self.assertEqual(self.ht.get(5), 'bar')
 
 
-    def test_put_raises_exception(self):
+    def test_put_type_checking(self):
         self.assertRaises(TypeError, self.ht.put, [], 100)
 
     
