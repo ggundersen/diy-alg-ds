@@ -12,20 +12,21 @@ Hashing is a good example of a space-time tradeoff. With infinite space, we
 could avoid all collisions. With infinite time, we could search sequentially.
 ----------------------------------------------------------------------------"""
 
-import hashlib
-
 
 class Hashtable:
 
 
     def __init__(self):
         """Initialize empty hashtable."""
-        self.arr = []
+        self.a = []
 
 
+    def _hash(self, val):
+        """Private hash function. For now, delegates to uilt-in hash()."""
 
-    def _hash(self):
-        """Private hash function. For now, delegates to hashlib."""
+
+    def _resize(self):
+        """Doubles size of internal array."""
         pass
 
 
