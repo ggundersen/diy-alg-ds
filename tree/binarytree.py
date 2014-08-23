@@ -41,12 +41,12 @@ class Binarytree:
         pass
 
 
-    def _put(self, key, val):
+    def _put(self, node, key, val):
         """Add key-value pair. Recursively return each subtree's root."""
         pass
 
 
     def put(self, key, val):
         """Recursively delegate to private _put(). Return void."""
-        self.root = _put(key, val)
+        self.root = _put(self.root, key, val)
         
