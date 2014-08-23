@@ -19,18 +19,23 @@ class Hashtable:
 
 
     def __init__(self):
-        pass
+        """Initialize empty hashtable."""
+        self.arr = []
+
 
 
     def _hash(self):
+        """Private hash function. For now, delegates to hashlib."""
         pass
 
 
-    def put(self):
+    def put(self, key, val):
+        """Add val at index hashed from key. Return void."""
         pass
 
 
-    def get(self):
+    def get(self, key):
+        """Return value stored at the index of hashed key."""
         pass
 
 
