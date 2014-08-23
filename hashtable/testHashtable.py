@@ -25,6 +25,10 @@ class TestHashtable(unittest.TestCase):
         self.assertEqual(self.ht.get('foo'), 100)
         self.assertEqual(self.ht.get(5), 'bar')
 
+
+    def test_put_raises_exception(self):
+        self.assertRaises(TypeError, self.ht.put, [], 100)
+
     
     def test_put_overwrite(self):
         self.ht.put('foo', 100)
