@@ -12,20 +12,23 @@ class Bag:
 
 
     def __init__(self):
-        pass
+        self.N = 0
+        self.a = []
 
     
     def isEmpty(self):
-        pass
+        return self.N == 0
 
 
     def size(self):
-        pass
+        return self.N
 
     
-    def add(self):
-        pass
+    def add(self, item):
+        self.N += 1
+        self.a.append(item)
 
 
-    def each(self):
-        pass
+    def each(self, fn):
+        for item in self.a:
+            fn(item)
