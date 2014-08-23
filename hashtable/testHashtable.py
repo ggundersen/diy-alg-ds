@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import unittest
+from unittest.mock import MagicMock
 
 from hashtable import Hashtable
 
@@ -24,6 +25,13 @@ class TestHashtable(unittest.TestCase):
         self.assertEqual(self.ht._size(), 1)
         val = self.ht.get('foo')
         self.assertEqual(val, 200)
+
+
+    def test_put_resize(self):
+        self.ht._resize = MagicMock()
+        self.ht.put('foo', 100)
+        self.ht.put('bar', 200)
+        self.assertTrue(self.ht._resize.called)
 
 
     def test_get(self):
