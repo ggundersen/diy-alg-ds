@@ -16,7 +16,6 @@ collisions, hashing to the same index and sequentially searching.
 Hashtable uses separate chaining with lists to resolve collisions.
 ----------------------------------------------------------------------------"""
 
-import pdb
 from collections import namedtuple
 
 
