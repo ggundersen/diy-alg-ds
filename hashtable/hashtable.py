@@ -77,10 +77,9 @@ class Hashtable:
         Return void."""
         if type(key) is not int or type(key) is not str:
             raise TypeError('Keys must be integers or strings.')
-        else:
-            if len(self.a) == self.N:
-                self._resize(2 * self.N)
-            self._put(self.a, key, val, len(self.a), False)
+        if len(self.a) == self.N:
+            self._resize(2 * self.N)
+        self._put(self.a, key, val, len(self.a), False)
 
 
     def get(self, key):
