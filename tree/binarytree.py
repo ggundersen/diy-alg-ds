@@ -13,15 +13,15 @@ class Binarytree:
 
 
     class Node:
-        """Inner class to represent nodes in tree."""
+        """Inner class to represent nodes in tree. Cannot be a namedtuple
+        because this class is mutable."""
         
-        
-        def __init__(self, key, val, left=None, right=None):
+        def __init__(self, key, val, left=None, right=None, N=None):
             self.key = key
             self.val = val
             self.left = left
             self.right = right
-            self.N
+            self.N = N
 
 
     def __init__(self):
@@ -48,11 +48,15 @@ class Binarytree:
     def _put(self, node, key, val):
         """Add key-value pair. Recursively return each subtree's root."""
         if node is None:
-            return Node(key, val)
+            return self.Node(key, val)
         # otherwise, go left or right...
 
 
     def put(self, key, val):
         """Recursively delegate to private _put(). Return void."""
-        self.root = _put(self.root, key, val)
-        
+        self.root = self._put(self.root, key, val)
+
+
+if __name__ == '__main__':
+    bt = Binarytree()
+    bt.put('foo', 100)
