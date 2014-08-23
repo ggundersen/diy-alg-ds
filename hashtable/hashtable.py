@@ -30,7 +30,6 @@ class Hashtable:
         self.a = [[]]
         
 
-
     def _hash(self, val, mod):
         """Return hash code after ensuring it is positive and within range."""
         return abs(hash(val)) % mod
