@@ -17,6 +17,15 @@ class TestHashtable(unittest.TestCase):
         self.ht.put('foo', 100)
         self.assertEqual(self.ht._size(), 1)
 
+    
+    def test_put_overwrite(self):
+        self.ht.put('foo', 100)
+        self.ht.put('foo', 200)
+        self.assertEqual(self.ht._size(), 1)
+        val = self.ht.get('foo')
+        self.assertEqual(val, 200)
+
+
     def test_get(self):
         self.ht.put('foo', 100)
         val = self.ht.get('foo')
