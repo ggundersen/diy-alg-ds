@@ -22,9 +22,9 @@ class Hashtable:
 
     def __init__(self):
         """Initialize empty hashtable."""
-        self.a = []
         self.N = 0   # Number of key-value pairs in the table
-        self.M = 16  # Size of linear probing table; M > N 
+        self.M = 16  # Size of linear probing table; M > N
+        self.a = [None] * self.M
 
 
     def _hash(self, val):
@@ -39,15 +39,17 @@ class Hashtable:
 
     def put(self, key, val):
         """Add val at index hashed from key. Return void."""
-        pass
+        if self.N >= self.M / 2:
+            self._resize(2 * self.M)
+        self.a[self._hash(key)] = val
 
 
     def get(self, key):
         """Return value stored at the index of hashed key."""
-        pass
+        return self.a[self._hash(key)]
 
 
 if __name__ == '__main__':
-    pdb.set_trace()
     ht = Hashtable()
     ht.put('foo', 1000)
+    print(ht.get('foo'))
