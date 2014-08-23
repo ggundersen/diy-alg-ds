@@ -39,8 +39,7 @@ class Hashtable:
     def _resize(self, lim):
         """Resize internal array. Return void."""
         temp = [[] for _ in range(lim)]
-        for i, v in enumerate(self.a):
-            chain = self.a[i]
+        for chain in self.a:
             for pair in chain:
                 self._put(temp, pair.key, pair.val, lim, True)
         self.a = temp
@@ -56,9 +55,10 @@ class Hashtable:
                 self.N += 1
         else:
             not_added = True
-            for pair in chain:
+            for i, pair in enumerate(chain):
                 if pair.key == key:
                     not_added = False
+                    chain[i] = Pair(key, val)  # Overwrite previous value
                     break
             if not_added:
                 chain.append(Pair(key, val))
@@ -92,3 +92,4 @@ if __name__ == '__main__':
     ht.put(335, 500)
     print(ht.a)
     print(ht.get('foo'))
+    print(ht.get(335))
