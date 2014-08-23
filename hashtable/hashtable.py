@@ -15,6 +15,12 @@ collisions, hashing to the same index and sequentially searching.
 ----------------------------------------------------------------------------"""
 
 
+from collections import namedtuple
+
+
+Pair = namedtuple('Pair', ['key', 'val'])
+
+
 class Hashtable:
 
 
@@ -22,6 +28,7 @@ class Hashtable:
         """Initialize empty hashtable."""
         self.N = 0  # Number of key-value pairs in the hash table
         self.a = [[]]
+        
 
 
     def _hash(self, val, mod):
@@ -30,47 +37,48 @@ class Hashtable:
 
 
     def _resize(self, lim):
-        """Resizes internal array."""
+        """Resize internal array. Return void."""
         temp = [[] for _ in range(lim)]
         for i, v in enumerate(self.a):
             chain = self.a[i]
-            for tple in chain:
-                self._put(temp, tple[0], tple[1], lim, True)
+            for pair in chain:
+                self._put(temp, pair.key, pair.val, lim, True)
         self.a = temp
 
 
-    def _put(self, lst, key, val, mod, is_copy=False):
+    def _put(self, lst, key, val, mod, is_copy):
+        """Add key to lst argument. Return void."""
         idx = self._hash(key, mod)
         chain = lst[idx]
         if len(chain) == 0:
-            chain.append((key, val))
+            chain.append(Pair(key, val))
             if not is_copy:
                 self.N += 1
         else:
             not_added = True
-            for tple in chain:
-                if tple[0] == key:
+            for pair in chain:
+                if pair.key == key:
                     not_added = False
                     break
             if not_added:
-                chain.append((key, val))
+                chain.append(Pair(key, val))
                 if not is_copy:
                     self.N += 1
 
 
     def put(self, key, val):
-        """Add val at index hashed from key. Return void."""
+        """Check list size and delegate to private put(). Return void."""
         if len(self.a) == self.N:
             self._resize(2 * self.N)
-        self._put(self.a, key, val, len(self.a))
+        self._put(self.a, key, val, len(self.a), False)
 
 
     def get(self, key):
         """Return value stored at the index of hashed key."""
         chain = self.a[self._hash(key, len(self.a))]
-        for tple in chain:
-            if tple[0] == key:
-                return tple[1]
+        for pair in chain:
+            if pair.key == key:
+                return pair.val
         return None
 
 
@@ -80,5 +88,7 @@ if __name__ == '__main__':
     ht.put('bar', 2000)
     ht.put('baz', 3000)
     ht.put('qux', 4000)
+    ht.put(335, 349)
+    ht.put(335, 500)
     print(ht.a)
     print(ht.get('foo'))
