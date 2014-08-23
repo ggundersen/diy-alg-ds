@@ -88,8 +88,3 @@ class Hashtable:
             if pair.key == key:
                 return pair.val
         return None
-
-
-if __name__ == '__main__':
-    ht = Hashtable()
-    ht.put(400, 'foo')
