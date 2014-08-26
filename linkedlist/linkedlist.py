@@ -6,31 +6,38 @@ linkedlist.py
 
 
 class Linkedlist:
-    
+   
+
+    class Node:
+        def __init__(self, item, next=None):
+            self.item = None
+            self.next = next
+
     
     def __init__(self):
-        pass
+        self.first = None
+        self.N = 0
 
 
     def is_empty(self):
-        pass
+        return self.N != 0
 
 
     def size(self):
-        pass
+        return self.N
 
 
-    def add_first(self):
-        pass
+    def add(self, item):
+        if self.first == None:
+            self.first = Node(item)
+        else:
+            self._add(self.first, item)
+        
+        #else:
+        #    temp = self.first
+        #    self.first = Node(item, temp)
+        #self.N += 1
 
 
-    def add_last(self):
-        pass
-
-
-    def remove_first(self):
-        pass
-
-
-    def remove_last(self):
+    def remove(self):
         pass
