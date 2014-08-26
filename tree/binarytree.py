@@ -39,17 +39,26 @@ class Binarytree:
 
 
     def size(self):
-        """Delegate to private _size() to enable recursion."""
+        """Delegate to private _size() for recursion."""
         return self._size(self.root)
         
 
-    def _get(self, key):
-        pass
+    def _get(self, node, key):
+        """Return value based on key."""
+        if node is None:
+            return None
+
+        if key < node.key:
+            return self._get(node.left, key)
+        elif key > node.key:
+            return self._get(node.right, key)
+        else:
+            return node
 
 
     def get(self, key):
-        """Get value based on key."""
-        pass
+        """Delegate to private _get() for recursion. Return val."""
+        return self._get(self.root, key)
 
 
     def _put(self, node, key, val):
@@ -70,7 +79,7 @@ class Binarytree:
 
 
     def put(self, key, val):
-        """Recursively delegate to private _put(). Return void."""
+        """Delegate to private _put() for recursion. Return void."""
         self.root = self._put(self.root, key, val)
 
 
@@ -80,3 +89,4 @@ if __name__ == '__main__':
     bt.put('foo', 100)
     bt.put('bar', 200)
     print( bt.size() )
+    print( bt.get('foo').val )
