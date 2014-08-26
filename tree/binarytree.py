@@ -8,8 +8,6 @@ node has at most two child nodes. The root node is the only node in a tree
 without a parent.
 ----------------------------------------------------------------------------"""
 
-import pdb
-
 
 class Binarytree:
 
@@ -73,7 +71,6 @@ class Binarytree:
         else:
             node.val = val
 
-        #pdb.set_trace()
         node.N = self._size(node.left) + self._size(node.right) + 1
         return node
 
@@ -81,12 +78,3 @@ class Binarytree:
     def put(self, key, val):
         """Delegate to private _put() for recursion. Return void."""
         self.root = self._put(self.root, key, val)
-
-
-if __name__ == '__main__':
-    bt = Binarytree()
-    #pdb.set_trace()
-    bt.put('foo', 100)
-    bt.put('bar', 200)
-    print( bt.size() )
-    print( bt.get('foo').val )
