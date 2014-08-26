@@ -7,4 +7,30 @@ linkedlist.py
 
 class Linkedlist:
     
-    pass
+    
+    def __init__(self):
+        pass
+
+
+    def is_empty(self):
+        pass
+
+
+    def size(self):
+        pass
+
+
+    def add_first(self):
+        pass
+
+
+    def add_last(self):
+        pass
+
+
+    def remove_first(self):
+        pass
+
+
+    def remove_last(self):
+        pass
