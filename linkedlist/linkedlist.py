@@ -61,19 +61,25 @@ class Linkedlist:
             count += 1
         new_node = self.Node(item, node, node.prev)
         node.prev.next = new_node
-        
 
 
     def get_first(self, item):
-        """Remove all nodes with item."""
+        """Get but do not remove first item from list."""
         result = self.first
         if self.first.next is not None:
             self.first = self.first.next
         return result
 
 
+    def remove_first(self):
+        """Remove first item from list."""
+        if self.is_empty():
+            return
+        self.first = self.first.next
+
+
     def pp(self):
-        """Pretty print linked list."""
+        """Pretty print list."""
         count = 0
         node = self.first
         while node is not None:
@@ -86,7 +92,7 @@ if __name__ == '__main__':
     ll = Linkedlist()
     ll.add_first('foo')
     ll.add_first('bar')
-    ll.add_first('qux')
-    ll.add_at('baz', 1)
+    ll.remove_first()
+    #ll.add_at('baz', 1)
     ll.pp()
 
