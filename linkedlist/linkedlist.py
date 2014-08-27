@@ -73,7 +73,7 @@ class Linkedlist:
         while count < idx and node and node.next:
             node = node.next
             count += 1
-        return node
+        return node.item
 
 
     def get_first(self, item):
@@ -109,7 +109,7 @@ if __name__ == '__main__':
     ll.add_first('quz')
     ll.add_first('ili')
     ll.pp()
-    print(ll.get(3).item)
+    print(ll.get(3))
     #ll.add_at('baz', 1)
     #ll.pp()
 
