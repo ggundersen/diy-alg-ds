@@ -56,11 +56,24 @@ class Linkedlist:
 
         count = 0
         node = self.first
-        while node is not None and node.next is not None and count < idx:
+        while node and node.next and count < idx:
             node = node.next
             count += 1
         new_node = self.Node(item, node, node.prev)
         node.prev.next = new_node
+
+
+    def get(self, idx):
+        """Get but do not remove item from list."""
+        if self.is_empty():
+            return None
+
+        node = self.first
+        count = 1
+        while count < idx and node and node.next:
+            node = node.next
+            count += 1
+        return node
 
 
     def get_first(self, item):
@@ -92,7 +105,11 @@ if __name__ == '__main__':
     ll = Linkedlist()
     ll.add_first('foo')
     ll.add_first('bar')
-    ll.remove_first()
-    #ll.add_at('baz', 1)
+    ll.add_first('bop')
+    ll.add_first('quz')
+    ll.add_first('ili')
     ll.pp()
+    print(ll.get(3).item)
+    #ll.add_at('baz', 1)
+    #ll.pp()
 
