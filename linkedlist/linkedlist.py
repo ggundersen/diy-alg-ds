@@ -40,7 +40,7 @@ class Linkedlist:
         self.N += 1
 
     def add_at(self, item, idx):
-        """Add item at index."""
+        """Add item at index. Zero-based index."""
         if self.is_empty():
             self.first = self.Node(item, self.last)
             return
@@ -56,23 +56,23 @@ class Linkedlist:
         new_node = self.Node(item, node, node.prev)
         node.prev.next = new_node
 
-    def get_at(self, idx):
-        """Get at index but do not remove from list."""
-        if self.is_empty():
-            return None
-
-        node = self.first
-        count = 1
-        while count < idx and node and node.next:
-            node = node.next
-            count += 1
-        return node.item
-
     def get_first(self):
         """Get first but do not remove from list."""
         if self.first:
             return self.first.item
         return None
+
+    def get_at(self, idx):
+        """Get at index but do not remove from list. Zero-based index."""
+        if self.is_empty():
+            return None
+
+        node = self.first
+        count = 0
+        while count < idx and node and node.next:
+            node = node.next
+            count += 1
+        return node.item
 
     def remove_first(self):
         """Remove first item from list."""
