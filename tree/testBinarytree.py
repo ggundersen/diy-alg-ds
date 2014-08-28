@@ -33,6 +33,5 @@ class TestBinarytree(unittest.TestCase):
         self.assertEqual(self.bt.size(), 1)
 
 
-
 if __name__ == '__main__':
     unittest.main()
