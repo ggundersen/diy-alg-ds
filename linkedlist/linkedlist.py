@@ -81,7 +81,15 @@ class Linkedlist:
             return
         self.first = self.first.next
 
-    def pp(self):
+    def _expose(self):
+        node = self.first
+        result = ''
+        while node is not None:
+            result += str(node.item) + '-'
+            node = node.next
+        return result[:-1]  # Remove trailing '-'
+
+    def _pp(self):
         """Pretty print list."""
         count = 0
         node = self.first
@@ -89,17 +97,3 @@ class Linkedlist:
             print(str(count) + ': ' + str(node.item))
             node = node.next
             count += 1
-
-
-if __name__ == '__main__':
-    ll = Linkedlist()
-    ll.add_first('foo')
-    ll.add_first('bar')
-    ll.add_first('bop')
-    ll.add_first('quz')
-    ll.add_first('ili')
-    ll.pp()
-    print(ll.get(3))
-    #ll.add_at('baz', 1)
-    #ll.pp()
-
