@@ -18,7 +18,6 @@ class Linkedlist:
     def __init__(self):
         """Initialize empty linked list."""
         self.first = None
-        self.last = None
         self.N = 0
 
     def is_empty(self):
@@ -32,7 +31,7 @@ class Linkedlist:
     def add_first(self, item):
         """Add item to end of list."""
         if self.is_empty():
-            self.first = self.Node(item, self.last)
+            self.first = self.Node(item)
         else:
             temp = self.first
             self.first = self.Node(item, temp)
@@ -42,10 +41,14 @@ class Linkedlist:
     def add_at(self, item, idx):
         """Add item at index. Zero-based index."""
         if self.is_empty():
-            self.first = self.Node(item, self.last)
+            self.first = self.Node(item)
             return
         elif self.size() < idx:
-            self.last = self.Node(item, None, self.last) 
+            node = self.first
+            while node and node.next:
+                node = node.next
+            new_node = self.Node(item, None, node)
+            node.next = new_node
             return
 
         count = 0
@@ -53,7 +56,7 @@ class Linkedlist:
         while node and node.next and count < idx:
             node = node.next
             count += 1
-        new_node = self.Node(item, node, node.prev)
+        new_node = self.Node(item, node)
         node.prev.next = new_node
 
     def get_first(self):
@@ -78,7 +81,9 @@ class Linkedlist:
         """Remove first item from list."""
         if self.is_empty():
             return
+        popped_node = self.first
         self.first = self.first.next
+        return popped_node.item
 
     def _expose(self):
         node = self.first
