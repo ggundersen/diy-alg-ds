@@ -56,8 +56,8 @@ class Linkedlist:
         new_node = self.Node(item, node, node.prev)
         node.prev.next = new_node
 
-    def get(self, idx):
-        """Get but do not remove item from list."""
+    def get_at(self, idx):
+        """Get at index but do not remove from list."""
         if self.is_empty():
             return None
 
@@ -68,12 +68,11 @@ class Linkedlist:
             count += 1
         return node.item
 
-    def get_first(self, item):
-        """Get but do not remove first item from list."""
-        result = self.first
-        if self.first.next is not None:
-            self.first = self.first.next
-        return result
+    def get_first(self):
+        """Get first but do not remove from list."""
+        if self.first:
+            return self.first.item
+        return None
 
     def remove_first(self):
         """Remove first item from list."""
