@@ -67,7 +67,7 @@ class Linkedlist:
 
     def get_at(self, idx):
         """Get at index but do not remove from list. Zero-based index."""
-        if self.is_empty():
+        if self.is_empty() or self.size() < idx:
             return None
 
         node = self.first
@@ -77,13 +77,25 @@ class Linkedlist:
             count += 1
         return node.item
 
+    def remove_at(self, idx):
+        if self.is_empty() or self.size() < idx:
+            return None
+        node = self.first
+        count = 0
+        while count < idx and node and node.next:
+            node = node.next
+            count += 1
+        temp = node
+        node.prev.next = node.next
+        return temp.item
+
     def remove_first(self):
         """Remove first item from list."""
         if self.is_empty():
             return
-        popped_node = self.first
+        node = self.first
         self.first = self.first.next
-        return popped_node.item
+        return node.item
 
     def _expose(self):
         node = self.first
