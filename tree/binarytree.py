@@ -11,7 +11,6 @@ without a parent.
 
 class Binarytree:
 
-
     class Node:
         """Inner class to represent nodes in tree. Cannot be a namedtuple
         because this class is mutable."""
@@ -23,11 +22,9 @@ class Binarytree:
             self.left = None
             self.right = None
 
-
     def __init__(self):
         """Initialize empty binary tree."""
         self.root = None
-
 
     def _size(self, node):
         """Return size based on node's N property."""
@@ -35,11 +32,9 @@ class Binarytree:
             return 0
         return node.N
 
-
     def size(self):
         """Delegate to private _size() for recursion."""
         return self._size(self.root)
-        
 
     def _get(self, node, key):
         """Return value based on key."""
@@ -53,11 +48,9 @@ class Binarytree:
         else:
             return node
 
-
     def get(self, key):
         """Delegate to private _get() for recursion. Return val."""
-        return self._get(self.root, key)
-
+        return self._get(self.root, key).val
 
     def _put(self, node, key, val):
         """Add key-value pair. Recursively return each subtree's root."""
@@ -73,7 +66,6 @@ class Binarytree:
 
         node.N = self._size(node.left) + self._size(node.right) + 1
         return node
-
 
     def put(self, key, val):
         """Delegate to private _put() for recursion. Return void."""
