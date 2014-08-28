@@ -2,6 +2,11 @@
 
 """----------------------------------------------------------------------------
 linkedlist.py
+
+A linked list, in its simplest form, is a sequence of nodes in which each node
+points to the next node. The primary advantage of a linked list is that nodes
+can be inserted or removed without reallocation or reorganization of the entire
+data structure.
 ----------------------------------------------------------------------------"""
 
 
