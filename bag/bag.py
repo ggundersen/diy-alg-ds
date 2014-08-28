@@ -17,7 +17,7 @@ class Bag:
         self._a = []
 
     
-    def isEmpty(self):
+    def is_empty(self):
         """Return true if the bag is empty, false otherwise."""
         return self._N == 0
 
