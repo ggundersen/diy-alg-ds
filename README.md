@@ -1,3 +1,3 @@
 ds
 ==
-Implementing my own classic data structures.
+Implementing my own classic algorithms and data structures.
