@@ -24,22 +24,18 @@ Pair = namedtuple('Pair', ['key', 'val'])
 
 class Hashtable:
 
-
     def __init__(self):
         """Initialize empty hashtable."""
         self.N = 0
         self.a = [[]]
 
-
     def _size(self):
         """Return number of key-value pairs in the hash table for testing."""
         return self.N
         
-
     def _hash(self, val, mod):
         """Return hash code after ensuring it is positive and within range."""
         return abs(hash(val)) % mod
-
 
     def _resize(self, lim):
         """Resize internal array. Return void."""
@@ -48,7 +44,6 @@ class Hashtable:
             for pair in chain:
                 self._put(temp, pair.key, pair.val, lim, True)
         self.a = temp
-
 
     def _put(self, lst, key, val, mod, is_copy):
         """Add key to lst argument. Return void."""
@@ -70,7 +65,6 @@ class Hashtable:
                 if not is_copy:
                     self.N += 1
 
-
     def put(self, key, val):
         """Check key type and list size and then delegate to private put().
         Return void."""
@@ -79,7 +73,6 @@ class Hashtable:
         if len(self.a) == self.N:
             self._resize(2 * self.N)
         self._put(self.a, key, val, len(self.a), False)
-
 
     def get(self, key):
         """Return value stored at the index of hashed key."""
