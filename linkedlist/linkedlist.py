@@ -7,7 +7,6 @@ linkedlist.py
 
 class Linkedlist:
    
-
     class Node:
 
         def __init__(self, item, next=None, prev=None):
@@ -16,23 +15,19 @@ class Linkedlist:
             self.next = next
             self.prev = prev
 
-    
     def __init__(self):
         """Initialize empty linked list."""
         self.first = None
         self.last = None
         self.N = 0
 
-
     def is_empty(self):
         """Return true if list is empty, false otherwise."""
         return self.first == None
 
-
     def size(self):
         """Return number of nodes."""
         return self.N
-
 
     def add_first(self, item):
         """Add item to end of list."""
@@ -43,7 +38,6 @@ class Linkedlist:
             self.first = self.Node(item, temp)
             temp.prev = self.first
         self.N += 1
-
 
     def add_at(self, item, idx):
         """Add item at index."""
@@ -62,7 +56,6 @@ class Linkedlist:
         new_node = self.Node(item, node, node.prev)
         node.prev.next = new_node
 
-
     def get(self, idx):
         """Get but do not remove item from list."""
         if self.is_empty():
@@ -75,7 +68,6 @@ class Linkedlist:
             count += 1
         return node.item
 
-
     def get_first(self, item):
         """Get but do not remove first item from list."""
         result = self.first
@@ -83,13 +75,11 @@ class Linkedlist:
             self.first = self.first.next
         return result
 
-
     def remove_first(self):
         """Remove first item from list."""
         if self.is_empty():
             return
         self.first = self.first.next
-
 
     def pp(self):
         """Pretty print list."""
